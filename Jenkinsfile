@@ -5,14 +5,14 @@ pipeline {
         // registry data
         registry = '35.226.142.211:5000' 
         registryCredential = 'nexus_deployer' 
-        imageName = 'maven-agent:${env.BUILD_NUMBER}' 
+        imageName = "maven-agent:${env.BUILD_NUMBER}"
         dockerImage = '' 
 
     }
     stages {
         stage ('Fetch Dockerfile') {
             steps {
-                echo '${env.BUILD_NUMBER}'
+                echo "${env.BUILD_NUMBER}"
                 git 'https://github.com/AMMiller/docker-maven'
             }
         }
