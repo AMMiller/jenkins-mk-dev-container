@@ -12,14 +12,13 @@ pipeline {
     stages {
         stage ('Fetch Dockerfile') {
             steps {
-                echo "${env.BUILD_NUMBER}"
                 git 'https://github.com/AMMiller/docker-maven'
             }
         }
         stage('Building docker image') { 
             steps { 
                 script { 
-                    dockerImage = docker.build registry + "/$imageName" 
+                    dockerImage = docker.build registry + '/$imageName'
                 }
             } 
         }
