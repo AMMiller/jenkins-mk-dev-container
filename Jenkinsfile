@@ -5,6 +5,7 @@ pipeline {
         // registry data
         registry = '35.226.142.211:5000' 
         registryCredential = 'nexus_deployer' 
+        imageName = 'maven-agent:${env.BUILD_NUMBER}' 
         dockerImage = '' 
 
     }
@@ -17,7 +18,7 @@ pipeline {
         stage('Building docker image') { 
             steps { 
                 script { 
-                    dockerImage = docker.build registry + "/maven-agent:" + $BUILD_NUMBER 
+                    dockerImage = docker.build registry + "/" + imageName 
                 }
             } 
         }
@@ -32,7 +33,7 @@ pipeline {
         } 
         stage('Cleaning up') { 
             steps { 
-                sh "docker rmi $registry/maven-agent:$BUILD_NUMBER" 
+                sh 'docker rmi $registry/$imageName'
             }
         } 
     }
