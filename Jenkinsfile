@@ -12,6 +12,7 @@ pipeline {
     stages {
         stage ('Fetch Dockerfile') {
             steps {
+                echo '${env.BUILD_NUMBER}'
                 git 'https://github.com/AMMiller/docker-maven'
             }
         }
