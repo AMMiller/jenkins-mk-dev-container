@@ -17,7 +17,7 @@ pipeline {
         stage('Building docker image') { 
             steps { 
                 script { 
-                    dockerImage = docker.build registry + "/maven-agent:latest" 
+                    dockerImage = docker.build registry + "/maven-agent:" + $BUILD_NUMBER 
                 }
             } 
         }
@@ -32,7 +32,7 @@ pipeline {
         } 
         stage('Cleaning up') { 
             steps { 
-                sh "docker rmi $registry/maven-agent:latest" 
+                sh "docker rmi $registry/maven-agent:$BUILD_NUMBER" 
             }
         } 
     }
