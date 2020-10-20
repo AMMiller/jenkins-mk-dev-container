@@ -6,7 +6,8 @@ pipeline {
         registry = '35.239.186.113:5000' 
 
         registryCredential = 'nexus_deployer' 
-        imageName = "maven-agent:${env.BUILD_NUMBER}"
+        // ${env.BUILD_NUMBER}
+        imageName = "maven-agent:latest"
         dockerImage = '' 
 
     }
