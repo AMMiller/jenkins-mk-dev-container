@@ -3,7 +3,7 @@ pipeline {
 
     environment { 
         // registry data
-        registry = '35.239.186.113:5000' 
+        registry = '104.197.26.253:5000' 
 
         registryCredential = 'nexus_deployer' 
         // ${env.BUILD_NUMBER}
